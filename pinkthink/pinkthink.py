@@ -19,18 +19,13 @@ class MainPage(webapp2.RequestHandler):
         user = users.get_current_user()
 
         if user:
-            url = users.create_logout_url(self.request.uri)
-            url_linktext = 'Logout'
-            #self.response.headers['Content-Type'] = 'text/html; charset=utf-8'
-            #self.response.write('Hello, ' + user.nickname())
+            self.response.headers['Content-Type'] = 'text/html; charset=utf-8'
+            self.response.write('Hello, ' + user.nickname())
         else:
-            url = users.create_login_url(self.request.uri)
-            url_linktext = 'Login'
+            self.redirect(users.create_login_url(self.request.uri))
 
         template_values = {
             'user' : user,
-            'url' : url,
-            'url_linktext' : url_linktext,
         }
 
         template = JINJA_ENVIRONMENT.get_template('index.html')
