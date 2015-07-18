@@ -38,12 +38,12 @@
               <img src="images/ptlogo.png" align=left>
               <nav>
                 <ul class="nav masthead-nav">
-                  <li class="active"><a href="/">Home</a></li>
+                  <li><a href="/">Home</a></li>
                   <li><a href="/create/">Create</a></li>
-                  <li><a href="#">My Projects</a></li>
-                  <li><a href="#">Explore</a></li>
+                  <li><a href="/myprojects">My Projects</a></li>
+                  <li><a href="/explore">Explore</a></li>
                   <li><a href="{{ url|safe }}">{{url_linktext}}</a></li>
-                   <li><a href="#" style="color: #ff0066">Points: ##</a></li>
+                  <li><a href="#" style="color: #ff0066">Points: ##</a></li>
                 </ul>
               </nav>
 
@@ -51,10 +51,21 @@
           </div>
 
 
-
-          <div class="inner cover">
-          </div>
-
+          <h1>Upload</h1>
+          <p> Great job on completing the coding challenge! Here is your finished code:</p>
+          <br>
+          <ul class="nav nav-sidebar">
+          
+<!-- ********** -->
+{% for code in codeList %}
+  <li>{{ code }}</li>
+{% endfor %}
+<!-- ^^^^^^^^^^ -->
+        
+          </ul>
+          
+          <br>
+          <p> Now, <a href="/myprojects"><span style="color: #ff0066"><b>share</b></span></a> your project with friends to earn even more points and make an even bigger <span style="color: #ff0066"><b>impact</b></span>.</p>
 
 
           <div class="mastfoot">
