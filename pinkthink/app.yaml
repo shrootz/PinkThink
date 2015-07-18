@@ -6,6 +6,8 @@ threadsafe: true
 handlers:
 - url: /bootstrap
   static_dir: bootstrap
+- url: /images
+  static_dir: images
 - url: /.*
   script: pinkthink.app
 
