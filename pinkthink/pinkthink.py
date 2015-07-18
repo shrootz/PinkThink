@@ -66,5 +66,5 @@ class CreatePage(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/create/(.*)', CreatePage),
-    ('/', MainPage),
+    (r'/', MainPage),
 ], debug=True)
