@@ -1,5 +1,6 @@
 import os
 import urllib
+import cgi
 
 from google.appengine.api import users
 from google.appengine.ext import ndb
@@ -63,8 +64,34 @@ class CreatePage(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('html/create.html')
         self.response.write(template.render(template_values))
 
+class SubmitPage(webapp2.RequestHandler):
+    def post(self):
+        completeCode = cgi.escape(self.request.get('content'))
+
+        # Checks for active Google account session
+        user = users.get_current_user()
+
+        if user:
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
+        template_values = {
+            'user' : user,
+            'url' : url,
+            'url_linktext': url_linktext,
+            'codeList' : codeList,
+            'completeCode' :completeCode,
+        }
+
+        template = JINJA_ENVIRONMENT.get_template('html/create.html')
+        self.response.write(template.render(template_values))
+
 
 app = webapp2.WSGIApplication([
     ('/create/(.*)', CreatePage),
+    ('/submitcode', SubmitPage),
     (r'/', MainPage),
 ], debug=True)

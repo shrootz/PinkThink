@@ -37,6 +37,10 @@
             <h1 class="cover-heading">Your Code Here</h1>
             <p class="lead">
               <ul class="nav nav-sidebar">
+              <form action="/submitcode" method="post">
+                <div><textarea name="content" rows="3" cols="60"></textarea></div>
+                <div><input type="submit" value="Test Code"></div>
+              </form>
               {% for code in codeList %}
                   <li>{{ code }}</li>
               {% endfor %}
