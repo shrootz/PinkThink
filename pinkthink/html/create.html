@@ -35,7 +35,9 @@
         <div class="cover-container">
 
           <div class="inner cover" style="width:800px; margin:0 auto;">
-            <h1 class="cover-heading">Your Code Here</h1>
+            {% if not codeList %}
+            <h1 class="cover-heading">Start Coding Here</h1>
+            {% endif %}
             <p class="lead">
               <ul class="nav nav-sidebar">
               {% for code in codeList %}
