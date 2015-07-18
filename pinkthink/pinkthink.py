@@ -35,7 +35,7 @@ class MainPage(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('index.html')
         self.response.write(template.render(template_values))
 
-codeList = []
+codeList = list()
 
 class CreatePage(webapp2.RequestHandler):
     def get(self, codeid):

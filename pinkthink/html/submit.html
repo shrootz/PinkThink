@@ -61,7 +61,7 @@
   <li>{{ code }}</li>
 {% endfor %}
 <!-- ^^^^^^^^^^ -->
-        
+
           </ul>
           
           <br>
@@ -70,7 +70,7 @@
 
           <div class="mastfoot">
             <div class="inner">
-              <p>Created by Shruti, Janet, Samantha, and Reynis.</p>
+              <p>{% if user %}Logged in as {{ user.nickname() }} | {%endif%}Created by Shruti, Janet, Samantha, and Reynis</p>
             </div>
           </div>
 
