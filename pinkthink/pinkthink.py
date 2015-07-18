@@ -65,9 +65,7 @@ class CreatePage(webapp2.RequestHandler):
         self.response.write(template.render(template_values))
 
 class SubmitPage(webapp2.RequestHandler):
-    def post(self):
-        completeCode = cgi.escape(self.request.get('content'))
-
+    def get(self):
         # Checks for active Google account session
         user = users.get_current_user()
 
@@ -86,12 +84,13 @@ class SubmitPage(webapp2.RequestHandler):
             'completeCode' :completeCode,
         }
 
-        template = JINJA_ENVIRONMENT.get_template('html/create.html')
+        template = JINJA_ENVIRONMENT.get_template('html/submit.html')
         self.response.write(template.render(template_values))
+
 
 
 app = webapp2.WSGIApplication([
     ('/create/(.*)', CreatePage),
     ('/submitcode', SubmitPage),
-    (r'/', MainPage),
+    (r'/.*', MainPage),
 ], debug=True)
