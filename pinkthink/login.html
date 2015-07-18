@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="icon" href="bootstrap/favicon.ico">
 
-    <title>PinkThink Home Page</title>
+    <title>PinkThink Login</title>
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -38,10 +38,32 @@
               <img src="images/ptlogo.png" align=left>
             </div>
           </div>
+           <section class="container">
+    <div class="login">
+      <h1>Login to PinkThink</h1>
+      <form method="post">
+        <p><input type="text" name="login" value="" placeholder="Username or Email"></p>
+        <p><input type="password" name="password" value="" placeholder="Password"></p>
+        <p class="remember_me">
+          <label>
+            <input type="checkbox" name="remember_me" id="remember_me">
+            Remember me on this computer
+          </label>
+        </p>
+        <p class="submit">
+            <a href="index.html">Log in</a>
+          </p>
+      </form>
+    </div>
 
+    <div class="login-help">
+      <p>Forgot your password? <a href="index.html">Click here to reset it</a>.</p>
+    </div>
+  </section>
+   
+
+            
           <div class="inner cover">
-            <h1 class="cover-heading">PinkThink</h1>
-            <p class="lead">Welcome to PinkThink!</p>
             <p class="lead">
               <a href="http://www.thepinkthink.org/" class="btn btn-lg btn-default">Learn more</a>
             </p>
