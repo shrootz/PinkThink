@@ -64,6 +64,48 @@ class CreatePage(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('html/create.html')
         self.response.write(template.render(template_values))
 
+class ProjectsPage(webapp2.RequestHandler):
+    def get(self):
+        # Checks for active Google account session
+        user = users.get_current_user()
+
+        if user:
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
+        template_values = {
+            'user' : user,
+            'url' : url,
+            'url_linktext': url_linktext
+        }
+
+        template = JINJA_ENVIRONMENT.get_template('html/myprojects.html')
+        self.response.write(template.render(template_values))
+
+class ExplorePage(webapp2.RequestHandler):
+    def get(self):
+        # Checks for active Google account session
+        user = users.get_current_user()
+
+        if user:
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
+        template_values = {
+            'user' : user,
+            'url' : url,
+            'url_linktext': url_linktext
+        }
+
+        template = JINJA_ENVIRONMENT.get_template('html/explore.html')
+        self.response.write(template.render(template_values))
+
 class SubmitPage(webapp2.RequestHandler):
     def get(self):
         # Checks for active Google account session
@@ -80,8 +122,7 @@ class SubmitPage(webapp2.RequestHandler):
             'user' : user,
             'url' : url,
             'url_linktext': url_linktext,
-            'codeList' : codeList,
-            'completeCode' :completeCode,
+            'codeList' : codeList
         }
 
         template = JINJA_ENVIRONMENT.get_template('html/submit.html')
@@ -92,5 +133,7 @@ class SubmitPage(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/create/(.*)', CreatePage),
     ('/submitcode', SubmitPage),
+    ('/myprojects', ProjectsPage),
+    ('/explore', ExplorePage),
     (r'/.*', MainPage),
 ], debug=True)
