@@ -34,10 +34,17 @@ class MainPage(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('index.html')
         self.response.write(template.render(template_values))
 
+codeList = []
+
 class CreatePage(webapp2.RequestHandler):
-    def get(self):
+    def get(self, codeid):
         # Checks for active Google account session
         user = users.get_current_user()
+        if codeid == "clear":
+            if codeList:
+                codeList.pop()
+        else:
+            codeList.append(codeid);
 
         if user:
             url = users.create_logout_url(self.request.uri)
@@ -49,13 +56,15 @@ class CreatePage(webapp2.RequestHandler):
         template_values = {
             'user' : user,
             'url' : url,
-            'url_linktext': url_linktext
+            'url_linktext': url_linktext,
+            'codeList' : codeList
         }
 
         template = JINJA_ENVIRONMENT.get_template('html/create.html')
         self.response.write(template.render(template_values))
 
+
 app = webapp2.WSGIApplication([
-    ('/create', CreatePage),
+    ('/create/(.*)', CreatePage),
     ('/', MainPage),
 ], debug=True)
