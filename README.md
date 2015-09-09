@@ -7,4 +7,5 @@ http://www.thepinkthink.org/#!technology/cku8
 #Sample Webpage
 http://pinkthink-1010.appspot.com/
 
-
+#Team Members
+Reynis Vazquez, Samantha Tran, Janet Chu
